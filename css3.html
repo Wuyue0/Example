@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客首页</title>
+
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .navgation{
+            position: fixed;
+            height:100%;
+            width:100%;
+            background-color:green;
+            z-index:101;
+        }
+
+        .navgation_open {
+            background: rgba(0,0,0,.6);
+        }
+
+        .navgation::before{
+            content: '';
+            width: 60%;
+            height: 100%;
+            position: fixed;
+            right:0;
+            background-color: #fff;
+            background-image: linear-gradient(46deg,#fff,#f1f2f0);
+
+            transition: all .5s cubic-bezier(.19,1,.22,1);
+            -moz-transition: all .5s cubic-bezier(.19,1,.22,1); 
+            -webkit-transition: all .5s cubic-bezier(.19,1,.22,1); 
+            -o-transition: all .5s cubic-bezier(.19,1,.22,1);
+
+            transform: translateX(45%) skew(-12deg);   
+            -ms-transform: translateX(45%) skew(-12deg);
+            -moz-transform: translateX(45%) skew(-12deg);
+            -webkit-transform: translateX(45%) skew(-12deg);
+            -o-transform: translateX(45%) skew(-12deg);
+
+            z-index:11
+        }
+
+        .navgation_close::before{
+            right:-60%;
+        }
+
+        .navgation_open .point{
+            position: absolute;
+            right:0;
+            top:200px;
+            z-index:101;
+            font-size: 20px;
+        }
+
+        .point li{
+            list-style: none;
+            line-height: 80px;
+        }
+
+        .point li a{
+            display: inline-block;
+            text-decoration: none;
+            padding: 10px 50px;
+            line-height: 46px;
+            color: #686967;
+        }
+
+        /* logo部分 */
+
+        .logo{
+            font-size: 50px;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index:101;
+            padding:10px 50px;
+        }
+        .logo a{
+            color:#686967;
+            text-decoration: none;
+        }
+        #menu{
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border-radius:50%;
+            right: 55px;
+            top:40px;
+            z-index:102;
+            cursor: pointer;
+            background-color: rgba(0,0,0,.1);
+            overflow: hidden;
+        }
+
+        .menu_open span:first-child{
+            margin-top:12px;
+        }
+
+        .menu_close span:first-child{
+            margin-top:18px;
+            transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+        }
+        .menu_close span:nth-of-type(2){
+            transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            margin-top:-2px;
+        }
+
+        .menu_open span , .menu_close span{
+            display: block;
+            background-color: #fff;
+            width: 26px;
+            height: 2px;
+            margin:0 auto;
+            margin-top:5px;
+            line-height: 10px;
+            transition: all .5s;
+        }
+
+        .menu_close span:last-child{
+            display: none;
+        }
+
+
+
+
+        .menu_close:hover, .menu_open:hover{
+            background-color: #6bc30d !important;
+        }
+
+        .navgation_close {
+             height: 0;
+        }
+
+        .navgation_close .point{
+            display: none;
+        }
+
+
+
+        #section1 {
+            height: 100vh;
+            padding: 0;
+            background-color: transparent;
+            background-image: url('./11.jpg');
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+        .section {
+            display: table;
+            overflow: hidden;
+            table-layout: fixed;
+            width: 100%;
+            position: relative;
+        }
+
+        .fp-tablecell{
+            display: table-cell;
+            vertical-align: middle;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index:1;
+        }
+
+        .page1 .nav{
+            text-align: center;
+            color:#fff;
+        }
+
+        .page1 p {
+            letter-spacing: 10px;
+            margin:20px 0 ;
+        }
+
+        h1{
+            font-weight: 400;
+        }
+
+        .layui-btn-normal{
+            background-color:#1E9FFF;
+        }
+
+        .layui-btn{
+            display: inline-block;
+            height: 38px;
+            line-height: 38px;
+            padding: 0 18px;
+            color: #fff;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 14px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            outline:0;
+            box-sizing: border-box;
+            vertical-align: middle;
+            text-decoration: none;
+        }
+        
+
+
+    </style>
+    
+</head>
+<body>
+
+    <div id="menu" class="hover_animation menu_open" data-mark="false">
+        <span></span>
+        <span></span>
+        <span></span>  
+    </div>
+
+    <div id="navgation" class="navgation navgation_close">
+        <ul class="point">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">博客</a></li>
+            <li><a href="#">留言</a></li>
+        </ul>
+
+        <div class="logo">
+            <a href="#">Mr.Yss</a>
+        </div>
+    </div>
+
+    <div class="section" id="section1">
+        <div class="fp-tablecell">
+            <div class="page1">
+                <div class="nav">
+                    <h1>燕 十 三</h1>
+                    <p> 剑气纵横三万里,一剑光寒十九洲</p>
+                    <a href="#" style="margin-top:20px" class="layui-btn layui-btn-normal">Enter Blog</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var menu = document.getElementById('menu');
+    var navgation = document.getElementById('navgation')
+
+    menu.onclick= function(){
+        if(menu.getAttribute('data-mark')==="false"){
+            menu.setAttribute('data-mark','true') 
+            menu.classList.replace('menu_open','menu_close')
+            navgation.classList.replace('navgation_close','navgation_open')
+        }else{
+            menu.setAttribute('data-mark','false') 
+            menu.classList.replace('menu_close','menu_open')
+            navgation.classList.replace('navgation_open','navgation_close')
+        }
+    }
+
+    
+
+function deleteEmptyProperty(obj){
+    var object = obj;
+    for (var i in object) {
+        var value = object[i];
+        if (value !==null && typeof(value) === 'object') {
+            if (Array.isArray(value)) {
+                if (value.length == 0) {
+                    delete object[i];
+                    continue;
+                }
+            }
+            this.deleteEmptyProperty(value);
+        } else {
+            if (value === null || value === undefined) {
+                delete object[i];
+            }
+        }
+    }
+    return object;
+}
+
+
+// 定义一个深拷贝函数  接收目标target参数
+function deepClone(target) {
+    // 定义一个变量
+    let result;
+    // 如果当前需要深拷贝的是一个对象的话
+    if (typeof target === 'object') {
+    // 如果是一个数组的话
+        if (Array.isArray(target)) {
+            result = []; // 将result赋值为一个数组，并且执行遍历
+            for (let i in target) {
+                // 递归克隆数组中的每一项
+                result.push(deepClone(target[i]))
+            }
+         // 判断如果当前的值是null的话；直接赋值为null
+        } else if(target===null) {
+            result = null;
+         // 判断如果当前的值是一个RegExp对象的话，直接赋值    
+        } else if(target.constructor===RegExp){
+            result = target;
+        }else {
+         // 否则是普通对象，直接for in循环，递归赋值对象的所有值
+            result = {};
+            for (let i in target) {
+                result[i] = deepClone(target[i]);
+            }
+        }
+     // 如果不是对象的话，就是基本数据类型，那么直接赋值
+    } else {
+        result = target;
+    }
+     // 返回最终结果
+    return result;
+}
+
+var json ={
+    afAppId: null,
+    afServiceId: null,
+    afTransId: '123123',
+    arr: [{
+        name: null,
+        age:1231
+    }],
+    ethTrafficFilters: [{destMacAddr: "",age:null}]
+
+}
+console.log(deleteEmptyProperty(json))
+
+console.log(2222222222222222,deepClone(json) === json)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
