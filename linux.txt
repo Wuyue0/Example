@@ -1,0 +1,18 @@
+1、Linux 上安装 Node.js
+    wget https://nodejs.org/dist/v10.16.0/node-v10.16.0-linux-x64.tar.xz    // 下载
+    tar xf node-v10.16.0-linux-x64.tar.xz                                   // 解压
+    cd node-v10.16.0-linux-x64                                              // 进入解压目录
+    解压文件的 bin 目录底下包含了 node、npm 等命令，我们可以修改linux系统的环境变量（profile）来设置直接运行命令：
+
+    老规矩先备份，养成修改重要文件之前先备份的好习惯。
+
+    cp /etc/profile /etc/profile.bak
+    然后vim /etc/profile，在最下面添加 export PATH=$PATH: 后面跟上node下bin目录的路径
+
+    export PATH=$PATH:/root/node-v10.16.0-linux-x64/bin
+    立即生效
+
+    source /etc/profile
+    [root@localhost ~]# node -v
+    v10.16.0
+    OK！安装成功！
