@@ -1,0 +1,59 @@
+1.git log 查看当前仓库的信息
+2.git  --pretty==oneline 查看git log简单的信息
+3.git reset --hard HEAD^ 代码版本回滚
+4.git reflog 用来记录你的每一次命令
+5.git diff HEAD -- readme.txt命令可以查看工作区和版本库里面最新版本的区别
+6.git checkout -- file 丢掉工作区的修改返回到最近一次git commit 或者git add 的状态；
+7.git reset HARD file 可以吧暂存区的修改撤销掉重新放回工作区.
+8.git rm file 移除版本库中的某个文件
+9.关联远程仓库 git remote add origin 地址
+10.推送到远程仓库 git push -u origin master
+11.远程仓库和本地仓库文件不一样的时候 要将远程的文件拉倒本地
+  git push -f origin master
+12.git branch -vv 查询本地分支和远程分支的关联关系
+13.删除分支 git branch -D 分支名
+14.本地分支和远程分支建立追踪关系
+  git branch --set-upstream-to=origin/远程分支名 本地分支名
+15.git branch -vv 检查本地分支是否真正建立关联
+16.git remote -v 检查本地关联的远程仓库
+17.git pull origin master --allow-unrelated-histories 合并两个独立的仓库的历史
+18.推送本地分支的代码到远程分支git push origin master  
+ 注意origin 是远程仓库的名字是git默认的叫法  后边是对应的分支名字
+19.远程仓库克隆 git clone url;
+20.git pull命令基本就是gitfetch 和git merge命令的组合体
+   指定从远程仓库中抓取内容，然后马上合并到所在的分支
+
+
+分支管理
+1.创建并且换分支 git checkout -b 分支名
+2.列出所有的分支 git branch 
+3.合并分支 git merge 分支名
+4.删除分支名 git branch -d 分支名
+
+5.新版本的git中 创建并切换分支 是 git switch -c dev
+  切换已有的分支 git switch
+
+6.查看分支合并图
+    git log --graph --pretty=oneline --abbrev-commit
+
+7.如果合并分支不用fast forward模式
+  git merge --no-off -m '提交的描述' 合并的分支名
+8.git stash 把工作现场储藏起来
+
+9.git stash apply stash@{序号} 需要恢复的工作现场是什么但是不删除当前的stash
+
+10.git stash pop 恢复现场的同时删除stash
+
+11.git stash list 查看stash list
+
+12. git  cherry-pick     merge一个commit
+
+13.git branch -D 分支名字 强制删除某个分支
+
+14.新建一个本地分支并与远程分支做关联 git checkout -b dev origin/dev
+
+
+自定义git
+
+1.git config --global color.ui true 让git显示不同的颜色
+2.git check-ignore -v 或略的规则
