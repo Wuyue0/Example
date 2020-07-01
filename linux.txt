@@ -10,9 +10,30 @@
     然后vim /etc/profile，在最下面添加 export PATH=$PATH: 后面跟上node下bin目录的路径
 
     export PATH=$PATH:/root/node-v10.16.0-linux-x64/bin
-    立即生效
 
+    立即生效
     source /etc/profile
     [root@localhost ~]# node -v
     v10.16.0
-    OK！安装成功！
+
+
+2、使用linux 的nohup命令让程序在后台运行
+
+    之前买了台CentOS的Vps，操作的时候，发现运行一些自己的脚本的时候，一旦关闭终端，脚本的运行也会终止。
+    为了让程序在后台继续运行，查了些资料，结果令人小鸡冻了一把，只要在命令前面加一个nohup就能解决了。
+
+    比如，我启动koa的web服务的时候，就可以这样做：
+
+    ## 正常情况下的执行
+    node --harmony app.js
+
+    ## 后台运行，不会因为断开终端而终止app
+    nohup node --harmony app.js &
+
+    ## 正常情况下的执行
+    node --harmony app.js
+    
+    ## 后台运行，不会因为断开终端而终止app
+    nohup node --harmony app.js &
+    
+    所有的终端输入都会被保存到当前目录的nohup.out文件中。
