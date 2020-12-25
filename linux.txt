@@ -37,3 +37,33 @@
     nohup node --harmony app.js &
     
     所有的终端输入都会被保存到当前目录的nohup.out文件中。
+
+============================================
+LINUX 常见的命令
+
+1.lsb_release -a 查看linux 版本
+2.uname -a 查看内核版本
+3.df 查看磁盘空间的占用情况
+  df -Th 以g为单位
+4.top 查看cpu资源和内存资源
+
+文件相关
+1.新建文件夹 mkdir 文件夹名字
+2.新建文件 touch 文件名字
+3.查看文件的内容 cat 文件
+4.输出内容到文件里  echo "wuyue " >> 文件的名字
+
+
+查看防火墙放行的端口
+
+firewall-cmd --list-all
+
+
+1.查看镜像  docker images
+2.运行服务 docker run -d --name 名称 -p 10050:27017 mongo:4
+3.查看docker运行的服务 docker ps
+4.设置防火墙白名单
+firewall-cmd --zone=pblic --add-port=1050/tcp --permanent
+5.设置生效 firewall-cmd --reload
+6.查看防火墙状态 firewall-cmd --state
+7删除node_modules  rimraf node_modules
